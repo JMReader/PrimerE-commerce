@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}" />
+		<link th:rel="stylesheet" type="text/css" th:href="@{/css/encabezado.css}" />
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
+
+	
+<title>Producto</title>
+
+<link th:rel="icon" type="" image/png"" th:href="@{/img/icon2.png}" />
+</head>
+<body class="bodyClientes">
+<div th:insert="layouts/headerr :: header"></div>
+
+	<h1 class="titulos">Formulario de Carga de Producto</h1>
+<form id="formProducto" th:object="${unProducto}" th:action="@{/producto/guardar}" method="post">
+		
+			<label for="codigo">Codigo</label> 
+			<input type="text"	id="codigo" th:field="*{codProducto}">
+		<br>
+		
+			<label for="nombre">Nombre</label> 
+			<input type="text"	id="nombre" th:field="*{nombre}">
+		<br>
+		    <label for="precio">Precio</label> 
+			<input type="number" id="precio" th:field="*{precio}">
+		<br>
+		
+			<label for="marca">Marca</label> 
+			<input type="text" id="marca" th:field="*{marca}">		
+		<br>
+		
+			<label for="stock">Stock</label> 
+			<input type="number" id="stock" th:field="*{stock}">
+		<br>
+
+		<div>
+			<button type="submit" value="Agregar">Agregar</button>
+		</div>
+
+	</form>
+					<!-- ---------------------------------------------------------------- -->
+
+		<br>
+		<h3>Lista de Productos</h3><br>
+		<div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Cod Producto</th>
+						<th>Nombre</th>
+						<th>Precio</th>
+						<th>Marca</th>
+						<th>Stock</th>
+					</tr>
+				</thead>
+				
+				<tr th:if="${productos.empty}">
+            		<td colspan="5"> No hay productos en el listado </td>
+        		</tr>
+				
+				<tr th:each="producto : ${productos}">
+					<td th:text="${producto.codProducto}"></td>
+					<td th:text="${producto.nombre}"></td>
+					<td th:text="${producto.precio}"></td>
+					<td th:text="${producto.marca}"></td>
+					<td th:text="${producto.stock}"></td>
+				</tr>
+			</table>
+		</div>
+
+		<br>
+
+	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript"
+		src="webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript"
+		src="webjars/popper.js/1.16.0/popper.min.js"></script>
+	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript"
+		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+	

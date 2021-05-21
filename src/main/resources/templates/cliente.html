@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}" />
+		<link th:rel="stylesheet" type="text/css" th:href="@{/css/encabezado.css}" />
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
+	<meta charset="UTF-8">
+	<link>
+	<title>Clientes</title>
+	<link th:rel="icon" type="" image/png"" th:href="@{/img/icon2.png}" />
+
+</head>
+<div th:insert="layouts/headerr :: header"></div>
+<body class="bodyClientes">
+
+
+	<div class="container">
+		
+		<h1 class="titulos">Formulario de Carga de Cliente</h1>
+		<form id="formProducto" th:object="${unCliente}" th:action="@{/cliente/guardar}" method="post">
+			<div class="form-group row">
+				<label for="numdoc" class="col-sm-2 col-form-label">Documento</label>
+				<div class="col-sm-3">
+					<input type="number" id="numdoc" th:field="*{nroDocumento}" class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="nomyape" class="col-sm-2 col-form-label">Nombre y Apellido</label>
+				<div class="col-sm-3">
+					<input type="text" id="nomyape" th:field="*{nombreApellido}">
+				</div>
+			</div>
+
+
+			<div class="form-group row">
+				<label for="fechanac" class="col-sm-2 col-form-label">Nacimiento</label>
+				<div class="col-sm-3">
+					<input type="date" id="fechanac" th:field="*{fechaNacimiento}">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="tipo" class="col-sm-2 col-form-label">Tipo</label>
+				<div class="col-sm-3">
+				<select id="tipo" th:field="*{tipoDocumento}">
+
+					
+						<option value="DNI">DNI</option>
+						<option value="Pasaporte">Pasaporte</option>
+						
+					
+					</select>
+					</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="codigo" class="col-sm-2 col-form-label">Cod Area</label>
+				<div class="col-sm-3">
+										<select id="codigo" th:field="*{codigoAreaTelefono}" class="form-control">
+						<option value="388">388 - Jujuy</option>
+						<option value="387">387 - Salta</option>
+						<option value="386">386 - Tucuman </option>
+					</select>
+
+				</div>
+			</div>
+
+<div class="form-group row">
+			<label for="numtel" class="col-sm-2 col-form-label">Telefono</label>
+			<div class="col-sm-3">
+			<input type="number" id="numtel" th:field="*{numTelefono}">
+			
+							</div>
+			</div>
+
+			
+<div class="form-group row">
+			<label for="email" class="col-sm-2 col-form-label">Email</label>
+			<div class="col-sm-3">
+			<input type="email" id="email" th:field="*{email}">
+			
+							</div>
+			</div>
+
+			
+			
+			<div class="form-group row">
+			<label for="password" class="col-sm-2 col-form-label">Contraseña</label>
+			<div class="col-sm-3">
+			<input type="password" id="password" th:field="*{password}">
+			
+							</div>
+			</div>
+
+			
+			<div class="form-group row">
+			<label for="fechaultcompra" class="col-sm-2 col-form-label">UltimaCompra</label>
+			<div class="col-sm-3">
+			<input type="date" id="fechaultcompra" th:field="*{fechaUltimaCompra}">
+			
+							</div>
+			</div>
+
+			
+
+			<div>
+				<button type="submit" value="Agregar">Agregar</button>
+			</div>
+
+		</form>
+
+		<!-- ---------------------------------------------------------------- -->
+
+		<h3 class="titulos">Lista de Clientes</h3><br>
+		<div>
+			<table>
+				<tr>
+					<th>Tipo</th>
+					<th>Num Doc</th>
+					<th>Apellido y Nombre</th>
+					<th>Email</th>
+					<th>Fecha de Nac</th>
+					<th>Fecha Ultima Compra</th>
+					<th>Edad</th>
+					<th>Cod - Telefono</th>
+					<th colspan="2">Datos Adicionales</th>
+
+				</tr>
+				<tr th:each="cli : ${clientes}">
+					<td th:text="${cli.tipoDocumento}"></td>
+					<td th:text="${cli.nroDocumento}"></td>
+					<td th:text="${cli.nombreApellido}"></td>
+					<td th:text="${cli.email}"></td>
+					<td th:text="${#temporals.format(cli.fechaNacimiento,'dd/MM/yyyy')}"></td>
+						<td th:text="${#temporals.format(cli.fechaUltimaCompra,'dd/MM/yyyy')}"></td>
+						<td th:text="${cli.getEdad()}"></td>
+						<td th:text="${cli.codigoAreaTelefono}+' - ' +${cli.numTelefono}"></td>
+						<td th:text="${cli.getTiempoDesdeUltimaCompra()}"></td>
+						<td th:text="${cli.getTiempoProxCumple}"></td>
+						
+					</tr>
+				</table>
+			</div>
+			</div>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
+			type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
+			type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
+			type="text/javascript"
+			src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

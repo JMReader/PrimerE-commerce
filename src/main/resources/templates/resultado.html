@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	Producto Guardado Satisfactoriamente
+	
+	<h1>Menú</h1>
+	<ul>
+		<li><a href="ultimo">Mostrar Último</a></li>
+		<li>Mostrar Todos</li>
+		<li>Buscar Producto por Nombre</li>
+		<li>Buscar Producto por Código</li>
+		<li><a href="volver">Volver</a></li>
+	</ul>
+
+	
+	<h3>Lista de Productos</h3><br>
+			<div>
+				<table>
+				    <tr>
+				      <th>Cod Producto</th>
+				      <th>Nombre</th>
+				      <th>Precio</th>
+				      <th>Marca</th>
+				      <th>Stock</th>				      
+				    </tr>
+					<tr th:each="producto : ${productos}">
+						<td th:text="${producto.codProducto}"></td>
+						<td th:text="${producto.nombre}"></td>
+						<td th:text="${producto.precio}"></td>
+						<td th:text="${producto.marca}"></td>
+						<td th:text="${producto.stock}"></td>						
+					</tr>
+				</table>
+			</div>
+			
+</body>
+
+</html>

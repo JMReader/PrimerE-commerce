@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	
+	<meta charset="UTF-8">
+	
+	<link>
+	
+</head>
+<body>
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
+
+
+	<div class="hdd" th:fragment="header" >
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}" />
+		<link th:rel="stylesheet" type="text/css" th:href="@{/css/encabezado.css}" />
+<nav class="navbar navbar-expand-lg ">
+	<img class ="imgicon" th:src="@{/img/heatt.png}" width="70" height="70">
+<ul>
+
+<li class="titulos">
+<a>	Progravisual </a>
+</li>
+
+<li class="lihead">
+<a href="/home">Home<span class="sr-only">(current)</span></a>
+</li>
+
+<li class="lihead">
+<a href="/producto/mostrar">Productos</a>
+</li>
+
+<li class="lihead">
+<a href="/cliente/mostrar">clientes</a>
+</li>
+
+
+</ul>
+</nav>
+	</div>
+</body>
+
+</html>

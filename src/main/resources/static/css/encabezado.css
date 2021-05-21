@@ -1,0 +1,17 @@
+.imgicon{
+	float: left;
+}
+li{
+	float: left;
+	padding : 8px 16px 8px 16px;
+	list-style: none;
+}
+nav{
+    background: #222222 ;
+	padding : 8px 16px 8px 16px;
+	text-align: center;
+    font-family: "Open Sans", sans-serif;
+}
+a{
+	color: white;
+}

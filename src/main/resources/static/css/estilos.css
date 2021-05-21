@@ -1,0 +1,71 @@
+.bodyClientes{
+color: #0dcaf0;
+background: black;
+text-align: center;
+}
+
+
+.titulos{
+	text-align: center;
+	font-family: "Copperplate";
+	color :#FC8EE7;
+}
+
+
+/*
+estilos para tabla
+*/
+
+
+.body-home{
+  font-family: "Open Sans", sans-serif;
+  height: 100vh;
+  background: url(https://images5.alphacoders.com/105/thumb-1920-1055511.png) 50% fixed;
+  background-size: cover;
+}
+
+.login-box {
+	
+  border-radius: 2px 2px 5px 5px;
+  padding: 10px 20px 20px 20px;
+  width: 90%;
+  max-width: 320px;
+  background :white;
+  position: relative;
+  padding-bottom: 80px;
+  box-shadow: 0px 20px 20px rgb(128, 255, 255);
+  opacity: 0.6;
+  
+  
+ }
+
+option{
+	margin-right:auto;
+	text-align: 10px;
+}
+th{
+		background : #202020;
+		color: white; 
+}
+tr:nth-child(even){
+	background: white;
+	color: #FC48E1;
+}
+tr:hover{
+	background: #0dcaf0;
+	color: white;
+}
+
+td, th{
+	border: 2px solid #FC48E1;
+	position: sticky;
+}
+table{
+	border-collapse:collapse;
+	caption-side: bottom;
+margin-left: auto;
+
+margin-right:auto;
+	width: 100%;
+	
+}
