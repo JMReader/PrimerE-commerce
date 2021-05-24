@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+	<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilos.css}" />
+		<link th:rel="stylesheet" type="text/css" th:href="@{/css/encabezado.css}" />
+	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
+
+	
+<title>Ventas</title>
+
+<link th:rel="icon" type="" image/png"" th:href="@{/img/icon2.png}" />
+</head>
+
+<body class="bodyClientes">
+<div th:insert="layouts/headerr :: header"></div>
+<div class="container">
+
+		<div class="row col-md-12">
+			<div th:each="c : ${productos}">
+				<div class="col-md-4">
+					<div class="card" style="width: 18rem;">
+					<img  th:src="@{/img/tienda-online.png}" class="card-img-top" alt="hola">
+						<div class="card-body">
+							<h5 class="card-title" th:text="${c.nombre}">Nombre</h5>
+							<p class="card-text" th:text="${'Cod. de producto - ' + c.codProducto}">Id</p>
+							<p class="card-text" th:text="${'Precio - ' + c.precio}">Precio</p>
+
+							<a class="stretched-link btn btn-primary"><i
+									class="fas fa-shopping-cart mr-2"></i>Comprar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript"
+		src="webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript"
+		src="webjars/popper.js/1.16.0/popper.min.js"></script>
+	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript"
+		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+</body>
