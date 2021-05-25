@@ -11,11 +11,13 @@ public interface IProductoService {
 	//que hace con producto
 	
 	public void guardarProducto(Producto unProducto);
-	public void modificarProducto(Producto productoAModificar);
-	public void eliminarProducto(Producto productoAEliminar);
 	public Producto obtenerUnProducto(String nombreProducto);
 	public ArrayList<Producto> obtenerTodosProductos();
 	public Producto obtenerProductoNuevo();
 	public Producto obtenerUltimoProducto();
+	public Producto encontrarUnProducto(int cod) throws Exception;
+	public Object crearProducto();
+	public void modificarProducto(Producto productoModificado) throws Exception;
+	public void eliminarProducto(int id) throws Exception;
 	
 }

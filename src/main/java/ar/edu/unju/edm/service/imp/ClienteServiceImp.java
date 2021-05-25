@@ -35,4 +35,22 @@ public class ClienteServiceImp implements IClienteService {
 		return listadoClientes;
 	}
 
+	@Override
+	public Cliente encontrarUnCliente(int dni) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void modificarCliente(Cliente unCliente) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eliminarCliente(int dni) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

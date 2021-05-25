@@ -68,11 +68,56 @@
 					<td th:text="${producto.precio}"></td>
 					<td th:text="${producto.marca}"></td>
 					<td th:text="${producto.stock}"></td>
+					<td><a href="#" th:href="@{'/producto/editar/'+${producto.codProducto}}"> <i class="fas fa-broom"></i>
+					</a> <a th:onclick="'javascript:confirmarEliminar(\''+${producto.codProducto}+'\');'">
+					<i class="fas fa-bomb"></i>
+					</a></td>
 				</tr>
 			</table>
 		</div>
+		
+				<!--Modal Eliminar-->
+		<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="eliminarModal"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="eliminarModalTitulo">Confirmar
+							Eliminar</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<h6>Esta seguro que desea eliminar este producto?</h6>
+					</div>
+					<input type="hidden" id="identificadorProducto" name="productoId" />
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+						<button type="button" class="btn btn-primary" th:onclick="eliminarProducto()">Borrar
+							producto</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 
 		<br>
+
+	</div>
+	<script type="text/javascript">
+		function confirmarEliminar(id) {
+			$('#modalEliminar').modal('show');
+			$("#identificadorProducto").val(id);
+		}
+
+		function eliminarProducto() {
+			var id = $("#identificadorProducto").val();
+			window.location = "eliminarProducto/" + id;
+		}
+	</script>
+
+		
 
 	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript"
 		src="webjars/jquery/3.5.1/jquery.min.js"></script>
@@ -81,6 +126,11 @@
 	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript"
 		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
+	<br>
+	<br>
+		<br>
+		<br>
+<div th:insert="layouts/footer :: footer"></div>
 </body>
 
 </html>

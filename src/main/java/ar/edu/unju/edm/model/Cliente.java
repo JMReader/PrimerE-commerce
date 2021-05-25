@@ -22,7 +22,6 @@ public class Cliente{
 	private Integer idCliente;
 	@Column(name="documento")
 	private int nroDocumento;
-
 	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;

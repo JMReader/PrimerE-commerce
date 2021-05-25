@@ -1,0 +1,13 @@
+.nav2{
+    background: #222222;
+    	text-align: center;
+    padding : 8px 16px 8px 16px;
+	color: #FC48E1;
+    font-family: "Open Sans", sans-serif;
+}
+.imgicon{
+	float: left;
+}
+.imgicon2{
+	float: right;
+}
