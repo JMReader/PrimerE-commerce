@@ -37,10 +37,10 @@ public class ClienteController{
 		return("cliente");
 	}
 
-	@GetMapping("/cliente/editar/{nroDocumento}")
-	public String editarCliente(Model model, @PathVariable(name="nroDocumento") int dni) throws Exception {
+	@GetMapping("/cliente/editar/{idDocumento}")
+	public String editarCliente(Model model, @PathVariable(name="idDocumento") int id) throws Exception {
 		try {
-			Cliente clienteEncontrado = clienteService.encontrarUnCliente(dni);
+			Cliente clienteEncontrado = clienteService.encontrarUnCliente(id);
 
 			model.addAttribute("unCliente", clienteEncontrado);	
 			model.addAttribute("editMode", "true");

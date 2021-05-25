@@ -50,9 +50,9 @@ public class ProductoServiceMYSQL implements IProductoService{
 	}
 
 	@Override
-	public Producto encontrarUnProducto(int cod) throws Exception {
+	public Producto encontrarUnProducto(int id) throws Exception {
 		// TODO Auto-generated method stub
-		return iProductoDAO.findByCodProducto(cod).orElseThrow(()->new Exception("El producto NO existe"));
+		return iProductoDAO.findById(id).orElseThrow(()->new Exception("El producto NO existe"));
 	}
 
 	@Override
@@ -64,14 +64,14 @@ public class ProductoServiceMYSQL implements IProductoService{
 	@Override
 	public void modificarProducto(Producto productoModificado) throws Exception {
 //		// TODO Auto-generated method stub
-		Producto productoAModificar = iProductoDAO.findByCodProducto(productoModificado.getCodProducto()).orElseThrow(()->new Exception("El Producto no fue encontrado"));
+		Producto productoAModificar = iProductoDAO.findById(productoModificado.getIdProducto()).orElseThrow(()->new Exception("El Producto no fue encontrado"));
 		cambiarProducto(productoModificado, productoAModificar);
 		iProductoDAO.save(productoAModificar);
 	}
 //
 	private void cambiarProducto(Producto productoModificado, Producto productoAModificar) {
 		// TODO Auto-generated method stub
-		productoAModificar.setCodProducto(productoModificado.getCodProducto());
+		//productoAModificar.setCodProducto(productoModificado.getCodProducto());//
 		productoAModificar.setNombre(productoModificado.getNombre());
 		productoAModificar.setMarca(productoModificado.getMarca());
 		productoAModificar.setPrecio(productoModificado.getPrecio());
@@ -81,7 +81,7 @@ public class ProductoServiceMYSQL implements IProductoService{
 	@Override
 	public void eliminarProducto(int id) throws Exception {
 		// TODO Auto-generated method stub
-		Producto productoEliminar = iProductoDAO.findByCodProducto(id).orElseThrow(()->new Exception("El Producto no fue encontrado"));
+		Producto productoEliminar = iProductoDAO.findById(id).orElseThrow(()->new Exception("El Producto no fue encontrado"));
 		iProductoDAO.delete(productoEliminar);
 	}
 

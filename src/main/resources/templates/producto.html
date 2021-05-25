@@ -17,6 +17,7 @@
 
 	<h1 class="titulos">Formulario de Carga de Producto</h1>
 <form id="formProducto" th:object="${unProducto}" th:action="@{/producto/guardar}" method="post">
+		<input type="hidden" id="identificadorProducto" th:field="*{idProducto}" />
 		
 			<label for="codigo">Codigo</label> 
 			<input type="text"	id="codigo" th:field="*{codProducto}">
@@ -42,6 +43,7 @@
 		</div>
 
 	</form>
+	
 					<!-- ---------------------------------------------------------------- -->
 
 		<br>
@@ -68,8 +70,8 @@
 					<td th:text="${producto.precio}"></td>
 					<td th:text="${producto.marca}"></td>
 					<td th:text="${producto.stock}"></td>
-					<td><a href="#" th:href="@{'/producto/editar/'+${producto.codProducto}}"> <i class="fas fa-broom"></i>
-					</a> <a th:onclick="'javascript:confirmarEliminar(\''+${producto.codProducto}+'\');'">
+					<td><a href="#" th:href="@{'/producto/editar/'+${producto.idProducto}}"> <i class="fas fa-broom"></i>
+					</a> <a th:onclick="'javascript:confirmarEliminar(\''+${producto.idProducto}+'\');'">
 					<i class="fas fa-bomb"></i>
 					</a></td>
 				</tr>
@@ -128,6 +130,8 @@
 
 	<br>
 	<br>
+		<br>
+		<br>
 		<br>
 		<br>
 <div th:insert="layouts/footer :: footer"></div>

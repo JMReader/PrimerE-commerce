@@ -20,6 +20,7 @@
 		
 		<h1 class="titulos">Formulario de Carga de Cliente</h1>
 		<form id="formProducto" th:object="${unCliente}" th:action="@{/cliente/guardar}" method="post">
+		<input type="hidden" id="identificadorCliente" th:field="*{idCliente}" />
 			<div class="form-group row">
 				<label for="numdoc" class="col-sm-2 col-form-label">Documento</label>
 				<div class="col-sm-3">
@@ -144,10 +145,10 @@
 						<td th:text="${cli.getTiempoDesdeUltimaCompra()}"></td>
 						<td th:text="${cli.getTiempoProxCumple}"></td>
 						<td>
-		 				<a  th:href="@{'/cliente/editar/'+${cli.nroDocumento}}">
+		 				<a  th:href="@{'/cliente/editar/'+${cli.idCliente}}">
 							<i class="fas fa-broom a1"></i>
 							</a>
-							<a th:onclick="'javascript:confirmarEliminar(\''+${cli.nroDocumento}+'\');'">
+							<a th:onclick="'javascript:confirmarEliminar(\''+${cli.idCliente}+'\');'">
 							<i class="fas fa-bomb"></i>
 							</a>
 						

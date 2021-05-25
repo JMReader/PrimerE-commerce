@@ -28,10 +28,10 @@ public class ProductoController {
 		return("producto");
 	}
 	
-	@GetMapping("/producto/editar/{codProducto}")
-	public String editarProducto(Model model, @PathVariable(name="codProducto") int cod) throws Exception {
+	@GetMapping("/producto/editar/{idProducto}")
+	public String editarProducto(Model model, @PathVariable(name="idProducto") int id) throws Exception {
 		try {
-			Producto productoEncontrado = productoService.encontrarUnProducto(cod);
+			Producto productoEncontrado = productoService.encontrarUnProducto(id);
 			model.addAttribute("unProducto", productoEncontrado);
 			model.addAttribute("editMode", "true");
 		}

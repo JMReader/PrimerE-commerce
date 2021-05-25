@@ -38,9 +38,9 @@ public class ClienteServiceMySQL implements IClienteService {
 	}
 
 	@Override
-	public Cliente encontrarUnCliente(int dni) throws Exception {
+	public Cliente encontrarUnCliente(int id) throws Exception {
 		// TODO Auto-generated method stub
-		return iClienteDAO.findByNroDocumento(dni).orElseThrow(()->new Exception("El cliente NO existe"));
+		return iClienteDAO.findById(id).orElseThrow(()->new Exception("El cliente NO existe"));
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class ClienteServiceMySQL implements IClienteService {
 		//Se busca el Cliente que se quiere modificar en la BD (por algÃºn campo que no se permita modificar)
 		//Se utilizo DNI pero si en mi app puedo cambiar el DNI, entonces la sentencia siguiente no seria correcta
 		//Tal vez serÃ­a mejor buscar por ID, que es un campo que no se modifica (findById)	
-		Cliente clienteAModificar = iClienteDAO.findByNroDocumento(clienteModificado.getNroDocumento()).orElseThrow(()->new Exception("El Cliente no fue encontrado"));
+		Cliente clienteAModificar = iClienteDAO.findById(clienteModificado.getIdCliente()).orElseThrow(()->new Exception("El Cliente no fue encontrado"));
 
 		//Si se utiliza directamente save, lo que se hace es AGREGAR otro cliente a la BD, y lo que nosotros queremos hacer es SUSTITUIR
 		//Por lo que clienteDAO.save(unClienteModificado); se deja al final del metodo
@@ -65,8 +65,8 @@ public class ClienteServiceMySQL implements IClienteService {
 	private void cambiarCliente(Cliente clienteModificado, Cliente clienteAModificar) {
 		// TODO Auto-generated method stub
 		//se pasan todos los atributos del cliente que viene, hacia el cliente que ya estÃ¡ en la BD
-		clienteAModificar.setNroDocumento(clienteModificado.getNroDocumento());
-		clienteAModificar.setTipoDocumento(clienteModificado.getTipoDocumento());
+		//clienteAModificar.setNroDocumento(clienteModificado.getNroDocumento());//
+		//clienteAModificar.setTipoDocumento(clienteModificado.getTipoDocumento());//
 		clienteAModificar.setFechaNacimiento(clienteModificado.getFechaNacimiento());
 		clienteAModificar.setCodigoAreaTelefono(clienteModificado.getCodigoAreaTelefono());
 		clienteAModificar.setNumTelefono(clienteModificado.getNumTelefono());
@@ -76,7 +76,7 @@ public class ClienteServiceMySQL implements IClienteService {
 	@Override
 	public void eliminarCliente(int id) throws Exception {
 		// TODO Auto-generated method stub
-		Cliente clienteEliminar = iClienteDAO.findByNroDocumento(id).orElseThrow(()->new Exception("El Cliente no fue encontrado"));
+		Cliente clienteEliminar = iClienteDAO.findById(id).orElseThrow(()->new Exception("El Cliente no fue encontrado"));
 		iClienteDAO.delete(clienteEliminar);
 	}
 
